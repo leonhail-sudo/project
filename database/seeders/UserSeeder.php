@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             $admin = resolve('User')->store([
                 'first_name' => 'Administrator',
                 'last_name' => 'Admin',
+                'name' => 'Admin',
                 'username' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('admin123'),
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
             // Create Root Agent
             $user = resolve('User')->store([
                 'first_name' => 'User',
+                'name' => 'User',
                 'last_name' => 'user',
                 'username' => 'user',
                 'email' => 'user@gmail.com',
