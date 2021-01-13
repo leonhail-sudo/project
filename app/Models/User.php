@@ -11,26 +11,19 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
+     /**
+     * The attributes that are not mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
-    /**
-     * The attributes that should be hidden for arrays.
+   /**
+     * Set Guard name of permission.
      *
-     * @var array
+     * @var string
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $guard_name = 'api';
 
     /**
      * The attributes that should be cast to native types.
