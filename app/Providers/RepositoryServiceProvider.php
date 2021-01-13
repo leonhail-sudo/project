@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use App\Repositories\Repository;
+use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
