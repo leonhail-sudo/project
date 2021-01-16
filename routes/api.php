@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use\App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['namespace' => 'Api'], function () {
+    // Guest
+    Route::group(['prefix' => 'guest'], function () {
+        Route::post('register', 'UserController@register');
+    });
+    // Callback
+    Route::group(['prefix' => 'callback'], function () {
+    });
+    // Authorized
+    Route::group(['prefix' => 'authorized', 'middleware' => ['auth:api']], function () {
+        Route::get('auth', [UserController::class, 'auth']);
+    });
 });
+
+Route::fallback(function () {
+    abort(404, 'Page Not Found. If error persists, contact info@mysms.ph');
+});
+
